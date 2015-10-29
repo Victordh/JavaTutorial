@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include "Person.h"
 
-void talk(Person* p)
+void talk(Personptr p)
 {
     printf("Hi, my name is %s\n", p->name);
     printf("and my age is %i\n", p->age);
     printf("\n");
 }
 
-void commentAboutAge(Person* p)
+void commentAboutAge(Personptr p)
 {
     if(p->age < 5)
     {
@@ -21,9 +21,9 @@ void commentAboutAge(Person* p)
     }
 }
 
-Person* newPerson(char* aName, int anAge)
+Personptr make_person(String aName, int anAge)
 {
-    Person* p = malloc(sizeof(Person));
+    Personptr p = malloc(sizeof(Person));
     p->name = aName;
     p->age = anAge;
     return p;
@@ -31,8 +31,8 @@ Person* newPerson(char* aName, int anAge)
 
 int main()
 {
-    Person* ls = newPerson("Luke Skywalker", 34);
-    Person* wp = newPerson("Winston Peters", 48);
+    Personptr ls = make_person("Luke Skywalker", 34);
+    Personptr wp = make_person("Winston Peters", 48);
     
     talk(ls);
     talk(wp);

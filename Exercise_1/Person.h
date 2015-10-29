@@ -4,6 +4,12 @@ typedef struct Person
     int age;
 }Person;
 
-void talk(Person* p);
-void commentAboutAge(Person* p);
-Person* newPerson(char* aName, int anAge);
+/* useful Java-like abbreviation for "char *" */
+typedef char *String;
+
+/* useful Java-like abbreviation for "struct Person *" */
+typedef struct Person *Personptr;
+
+void talk(Personptr p);
+void commentAboutAge(Personptr p);
+Personptr make_person(String aName, int anAge);
