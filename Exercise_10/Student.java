@@ -11,7 +11,7 @@ public class Student
     public Student ()
     {
         name = "";
-        age = 0;
+        age = -2;
     }
 
     public void readName () throws IOException
@@ -19,10 +19,26 @@ public class Student
         System.out.print("Input your name: ");
         name = stdIn.readLine();
     }
-    public void readAge ()
+    public void readAge () throws IOException
     {
-        System.out.print("Input your age: ");
-        age = Integer.parseInt(stdIn.readLine());
+        while (age < 0 || age > 150)
+        {
+            try
+            {
+                System.out.print("Input your age (0 - 150): ");
+                age = Integer.parseInt(stdIn.readLine());
+            }
+            catch (IOException e)
+            {
+                System.out.print("Help! Your keyboard probably exploded!");
+                System.exit(0);
+            }
+            catch (NumberFormatException e)
+            {
+                age = -1;
+                System.out.print("That's not a number, please try again.\n");
+            }
+        }
     }
 
     public void printName ()
@@ -39,8 +55,7 @@ public class Student
         Student me = new Student();
         me.readName();
         me.printName();
+        me.readAge();
+        me.printAge();
     }
 }
-
-  
-  
